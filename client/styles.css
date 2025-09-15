@@ -1,0 +1,86 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #4361ee;
+    border-color: #4361ee;
+}
+
+.btn-primary:hover {
+    background-color: #3a56d4;
+    border-color: #3a56d4;
+}
+
+.property-card {
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.badge-verified {
+    background-color: #4cc9f0;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #f72585;
+    color: white;
+}
+
+.travel-time {
+    color: #4361ee;
+    font-weight: 600;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4361ee;
+}
+
+.split-price {
+    font-size: 1rem;
+    color: #4cc9f0;
+}
+
+.ai-explanation {
+    background-color: #f1f3f9;
+    border-left: 4px solid #4361ee;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 0 5px 5px 0;
+}
+
+.safety-score {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.safety-high {
+    background-color: #52b788;
+    color: white;
+}
+
+.safety-medium {
+    background-color: #ffb703;
+    color: white;
+}
+
+.safety-low {
+    background-color: #e63946;
+    color: white;
+}
