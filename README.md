@@ -60,6 +60,7 @@ safestay/
 - Backend: Node.js, Express
 - Database: MongoDB (simulated)
 - APIs: Google Maps (simulated), OpenAI (simulated)
+![Home](https://github.com/user-attachments/assets/8dbbccee-5bd5-473c-adcb-380974627d6c)
 
 ## Note
 
