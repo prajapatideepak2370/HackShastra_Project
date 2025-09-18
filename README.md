@@ -61,6 +61,7 @@ safestay/
 - Database: MongoDB (simulated)
 - APIs: Google Maps (simulated), OpenAI (simulated)
 ![Home](https://github.com/user-attachments/assets/8dbbccee-5bd5-473c-adcb-380974627d6c)
+![page1](https://github.com/user-attachments/assets/0b8ba1a9-ae70-4494-b62d-99f6511c3fa4)
 
 ## Note
 
