@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { getMockListings, calculateScore } = require('../utils/mockData');
+const { detectDuplicateListings, detectFakeID } = require('../utils/fraudDetection');
 
 // Get recommendations based on user preferences
 router.post('/recommendations', (req, res) => {
@@ -26,6 +27,32 @@ router.post('/recommendations', (req, res) => {
             };
         });
         
+        // Apply fraud detection to identify suspicious listings
+        filteredListings = filteredListings.map(listing => {
+            // Check for duplicate listings
+            const duplicateCheck = detectDuplicateListings(listing, 
+                filteredListings.filter(l => l.id !== listing.id));
+            
+            // Check for fake owner ID (if owner data exists)
+            const fakeIDCheck = listing.owner ? detectFakeID(listing.owner) : { isFake: false, confidence: 0 };
+            
+            // Update listing verification status based on fraud detection
+            const isSuspicious = duplicateCheck.isDuplicate || fakeIDCheck.isFake;
+            
+            return {
+                ...listing,
+                verified: listing.verified && !isSuspicious,
+                fraudDetails: {
+                    isDuplicate: duplicateCheck.isDuplicate,
+                    duplicateConfidence: duplicateCheck.confidence,
+                    hasFakeID: fakeIDCheck.isFake,
+                    fakeIDConfidence: fakeIDCheck.confidence,
+                    flags: [...(fakeIDCheck.flags || [])],
+                    similarListings: duplicateCheck.similarListings || []
+                }
+            };
+        });
+
         // Sort by relevance score
         filteredListings.sort((a, b) => {
             const scoreA = calculateScore(a, budget);
@@ -55,7 +82,14 @@ router.post('/recommendations', (req, res) => {
                     explanation += 'but has average safety ratings.';
                 }
             } else {
-                explanation = 'This listing has been flagged as suspicious. The price is unusually low for the area and amenities.';
+                // Enhanced explanation for suspicious listings
+                if (listing.fraudDetails?.isDuplicate) {
+                    explanation = 'This listing has been flagged as a potential duplicate. Similar properties have been listed by different owners.';
+                } else if (listing.fraudDetails?.hasFakeID) {
+                    explanation = 'This listing has been flagged due to suspicious owner verification details.';
+                } else {
+                    explanation = 'This listing has been flagged as suspicious. The price is unusually low for the area and amenities.';
+                }
             }
             
             return {

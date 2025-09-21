@@ -1,86 +1,115 @@
+/* ====== Base ====== */
 body {
     background-color: #f8f9fa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ====== Cards ====== */
 .card {
-    border-radius: 10px;
+    border-radius: 12px;
     border: none;
-    margin-bottom: 20px;
+}
+.property-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.property-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(50,50,93,0.08);
+}
+.card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
+/* ====== Buttons ====== */
 .btn-primary {
     background-color: #4361ee;
     border-color: #4361ee;
 }
-
-.btn-primary:hover {
-    background-color: #3a56d4;
-    border-color: #3a56d4;
+.btn-primary:hover { background-color: #3a56d4; border-color: #3a56d4; }
+.btn-success {
+    background-color: #2a9d8f;
+    border-color: #2a9d8f;
 }
+.btn-success:hover { background-color: #23867b; border-color: #23867b; }
 
-.property-card {
-    transition: transform 0.3s;
-    height: 100%;
-}
-
-.property-card:hover {
-    transform: translateY(-5px);
-}
-
+/* ====== Badges & tags ====== */
 .badge-verified {
     background-color: #4cc9f0;
     color: white;
 }
-
 .badge-warning {
     background-color: #f72585;
     color: white;
 }
+.travel-time { color:#4361ee; font-weight:600; }
+.price { font-size:1.25rem; font-weight:700; color:#4361ee; }
+.split-price { font-size:0.95rem; color:#4cc9f0; }
 
-.travel-time {
-    color: #4361ee;
-    font-weight: 600;
-}
-
-.price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #4361ee;
-}
-
-.split-price {
-    font-size: 1rem;
-    color: #4cc9f0;
-}
-
+/* ====== AI explanation panel ====== */
 .ai-explanation {
     background-color: #f1f3f9;
     border-left: 4px solid #4361ee;
-    padding: 10px 15px;
-    margin-top: 15px;
-    border-radius: 0 5px 5px 0;
+    padding: 10px 12px;
+    margin-top: 12px;
+    border-radius: 4px;
 }
 
+/* ====== Safety pill ====== */
 .safety-score {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 15px;
-    font-weight: bold;
-    margin-right: 10px;
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-weight:700;
+    margin-right:8px;
+    font-size:0.85rem;
+}
+.safety-high { background-color:#52b788; color:#fff; }
+.safety-medium { background-color:#ffb703; color:#fff; }
+.safety-low { background-color:#e63946; color:#fff; }
+
+/* Fraud detection alerts */
+.fraud-alert {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(220, 53, 69, 0.9);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  z-index: 2;
 }
 
-.safety-high {
-    background-color: #52b788;
-    color: white;
+.fake-id-alert {
+  top: 40px;
+  background-color: rgba(255, 193, 7, 0.9);
+  color: #212529;
 }
 
-.safety-medium {
-    background-color: #ffb703;
-    color: white;
+/* ====== Favorite heart ====== */
+.favorite-btn { border: none; background: transparent; font-size:1.2rem; cursor: pointer; }
+.favorite-active { color: #ff3860; transform: scale(1.05); }
+
+/* ====== Skeleton (shimmer) ====== */
+.skeleton {
+    background: linear-gradient(-90deg, #e9eef7 0%, #f6f8fb 50%, #e9eef7 100%);
+    background-size: 400% 400%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: 8px;
+}
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
-.safety-low {
-    background-color: #e63946;
-    color: white;
+/* ====== small responsive tweaks ====== */
+@media (max-width: 767px) {
+    .card .card-img-top { height: 160px; }
 }
