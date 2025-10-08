@@ -62,5 +62,8 @@ safestay/
 - APIs: Google Maps (simulated), OpenAI (simulated)
 
 ## Note
+![Home](https://github.com/user-attachments/assets/54a88a28-4641-49b3-9637-7ec80db4feaf)
+![p1](https://github.com/user-attachments/assets/f9194c3f-b695-4405-842b-3e943a8ea7f8)
+![p2](https://github.com/user-attachments/assets/197e96b5-fbcb-4f02-9ed8-68b7116029bd)
 
 This is a prototype version with simulated data and API responses for demonstration purposes.
